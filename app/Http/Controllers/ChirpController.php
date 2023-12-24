@@ -14,9 +14,11 @@ class ChirpController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): ViewAlias
+    public function index(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
-        return view('chirps.index');
+        return view('chirps.index',[
+            'chirps' =>Chirp::with('user')->latest()->get(),
+        ]);
     }
 
     /**
