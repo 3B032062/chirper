@@ -20,4 +20,10 @@ class ChirpPolicy
     {
         return $chirp->user()->is($user);
     }
+
+    public function delete(User $user, Chirp $chirp):bool
+    {
+        return $this->update($user , $chirp);
+    }
+
 }
